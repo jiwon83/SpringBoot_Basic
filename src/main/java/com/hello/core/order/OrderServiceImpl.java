@@ -1,16 +1,21 @@
 package com.hello.core.order;
 
 import com.hello.core.discount.DiscountPolicy;
-import com.hello.core.discount.FixDiscountPolicy;
 import com.hello.core.member.Grade;
 import com.hello.core.member.Member;
 import com.hello.core.member.MemberRepository;
 import com.hello.core.member.MemoryMemberRepository;
 
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final MemberRepository memberRepository; // = new MemoryMemberRepository();
+    //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //배역을 수행할 뿐 아니라, 상대배우까지 직접 선택해야함.
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -19,6 +24,6 @@ public class OrderServiceImpl implements OrderService{
         //discountPolicy적용
         int discountPrice = discountPolicy.discount(member, itemPrice); //SRP가 잘 된 것.
 
-        return new Order(memberId,itemName,itemPrice,discountPrice);
+        return new Order(memberId, itemName, itemPrice, discountPrice);
     }
 }
