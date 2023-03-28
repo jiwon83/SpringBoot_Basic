@@ -9,13 +9,13 @@ import com.hello.core.member.MemoryMemberRepository;
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository; // = new MemoryMemberRepository();
-    //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //배역을 수행할 뿐 아니라, 상대배우까지 직접 선택해야함.
-    private final DiscountPolicy discountPolicy;
+    private final DiscountPolicy discountPolicy; //DIP 준수
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

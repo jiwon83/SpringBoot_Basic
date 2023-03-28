@@ -1,15 +1,24 @@
 package com.hello.core.order;
 
+import com.hello.core.AppConfig;
 import com.hello.core.discount.DiscountPolicy;
 import com.hello.core.discount.FixDiscountPolicy;
 import com.hello.core.member.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
+    private OrderService orderService;
+    private MemberService memberService;
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig config = new AppConfig();
+        orderService = config.orderService();
+        memberService = config.memberService();
+    }
 
-    private OrderService orderService = new OrderServiceImpl();
-    private MemberService memberService = new MemberServiceImpl();
+
 //    private MemoryMemberRepository fakeRepository = new MemoryMemberRepository();
     private void join_in_test(Long memberId, String memberName, Grade grade){
         Member member = new Member(memberId, memberName, grade);

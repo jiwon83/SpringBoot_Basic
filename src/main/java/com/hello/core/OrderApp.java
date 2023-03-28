@@ -3,12 +3,12 @@ package com.hello.core;
 import com.hello.core.member.*;
 import com.hello.core.order.Order;
 import com.hello.core.order.OrderService;
-import com.hello.core.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        AppConfig config = new AppConfig();
+        MemberService memberService = config.memberService();
+        OrderService orderService = config.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);

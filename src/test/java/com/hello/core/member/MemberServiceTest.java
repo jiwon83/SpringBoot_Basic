@@ -1,12 +1,19 @@
 package com.hello.core.member;
 
+import com.hello.core.AppConfig;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MemberServiceTest {
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
 
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig config = new AppConfig();
+        memberService = config.memberService();
+    }
     @Test
     public void join(){
         //given
