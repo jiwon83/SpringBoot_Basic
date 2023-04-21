@@ -7,6 +7,7 @@ public class StatefulService { //test 생성 단축키 ctrl + shift + t
 
     public void order(String name, int price){
         System.out.println("name = "+ name + " price = "+ price);
+        this.price = price;
         //return price;
     }
 
