@@ -35,7 +35,8 @@ public class OrderServiceTest {
         Order order = orderService.createOrder(memberId, "itemA", 5000);
 
         //then : 1000원 할인된 가격 return
-        Assertions.assertEquals(1000, order.getDisCountPrice());
+        //Assertions.assertEquals(1000, order.getDisCountPrice());
+        Assertions.assertEquals(500, order.getDisCountPrice());
 
     }
     @Test
