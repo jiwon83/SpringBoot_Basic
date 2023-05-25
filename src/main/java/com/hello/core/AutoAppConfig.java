@@ -14,11 +14,6 @@ import org.springframework.context.annotation.*;
 ) //why Appconifg가 아니라 configuration.class?? => 기존 예제 코드 때문
 public class AutoAppConfig {
 
-    @Bean("memoryMemberRepository")
-    MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
-    }
-
     /** @ComponentScan => @Component가 붙은 클래스를 자동으로 bean으로 등록해준다.
      * 이때, 의존 관계 주입할 방법이 없으므로 주입이 필요한 부분에 @Autowired로 타입을 기준으로 찾아서 주입해준다.
      * */
