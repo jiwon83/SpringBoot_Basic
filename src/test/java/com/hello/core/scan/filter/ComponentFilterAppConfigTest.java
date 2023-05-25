@@ -23,6 +23,12 @@ public class ComponentFilterAppConfigTest {
                 NoSuchBeanDefinitionException.class,
                 () -> ac.getBean("beanB", BeanB.class)
         );
+//        assertThrows(NoSuchBeanDefinitionException.class, new Executable() {
+//            @Override
+//            public void execute() throws Throwable {
+//                ac.getBean("beanB", BeanB.class);
+//            }
+//        });
 
     }
 
