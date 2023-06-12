@@ -3,7 +3,7 @@ package com.hello.core.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("memberServiceImpl")
+@Component
 public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository; // = new MemoryMemberRepository(); //DIP 위반, 추상화에도 의존, 구체화에도 의존
 
